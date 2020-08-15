@@ -5,6 +5,8 @@ var tbody = d3.select("tbody");
 
 console.log(tableData);
 
+//tbody.html("");
+
 tableData.forEach((ufoSighting) => {
     var row = tbody.append("tr");
     Object.entries(ufoSighting).forEach(([key, value]) => {
@@ -23,14 +25,27 @@ form.on("submit", runEnter);
 function runEnter() {
     d3.event.preventDefault();
 
-    var inputElement = d3.select("datetime");
+    var inputElement = d3.select("#datetime");
 
     var inputValue = inputElement.property("value");
 
     console.log(inputValue);
 
+    var filteredData = tableData.filter(tableData => tableData.datetime === inputValue);
 
-}
+    console.log(filteredData);
+
+    tbody.html("");
+
+    filteredData.forEach((item) => {
+        var row = tbody.append("tr");
+        Object.entries(item).forEach(([key, value]) => {
+            var cell = row.append("td");
+            cell.text(value);
+        });
+    });
+
+};
 
 
 
