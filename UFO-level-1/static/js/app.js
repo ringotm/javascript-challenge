@@ -5,8 +5,6 @@ var tbody = d3.select("tbody");
 
 console.log(tableData);
 
-//tbody.html("");
-
 tableData.forEach((ufoSighting) => {
     var row = tbody.append("tr");
     Object.entries(ufoSighting).forEach(([key, value]) => {
